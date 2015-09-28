@@ -1,0 +1,24 @@
+{
+  "name": "node-cmd-switch",
+  "version": "1.0.0",
+  "description": "Process command line switches for the node script",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasoncmcg/node-cmd-switch.git"
+  },
+  "keywords": [
+    "node",
+    "commandline",
+    "switches"
+  ],
+  "author": "Jason McGinnis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasoncmcg/node-cmd-switch/issues"
+  },
+  "homepage": "https://github.com/jasoncmcg/node-cmd-switch#readme"
+}
