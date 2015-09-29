@@ -1,4 +1,4 @@
-var p = ("node-in-parallel");
+var p = require("node-in-parallel");
 
 var bigList = [];
 
@@ -19,23 +19,25 @@ var valueItem = function (item) {
 	}
 }
 
-var addToList = function(name, description, tag, hasValue) {
+exports.addToList = function(name, description, tag, hasValue) {
 
-	bigList.add({"name":name, "description": description, "tag": tag, "hasValue": hasValue})
+	bigList.push({"name":name, "description": description, "tag": tag, "hasValue": hasValue})
 	
 }
 
 exports.process = function () {
 	
+	console.log(bigList);
+	
 	var doneWithDefinedItems = function () {}
 	
-	var forEachArgument = function () {
-		
+	var forEachArgument = function (item) {
+		console.log(item);
 	}
 	
-	var forEachDefinedItem = function () {
+	var forEachDefinedItem = function (item) {
 		p(process.arv, forEachArgument, doneWithDefinedItems)
 	}
 	
-	p(bigList, forEachDefinedItem(bigList), doneWithDefinedItems)
+	p(bigList, forEachDefinedItem, doneWithDefinedItems)
 }
