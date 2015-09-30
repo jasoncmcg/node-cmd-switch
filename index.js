@@ -1,41 +1,33 @@
-var p = ("node-in-parallel");
+var p = require("node-in-parallel");
 
 var bigList = [];
+var returnList = [];
 
-var singleCheck = function (item) {
-	var units = process.argv[2];
-		if(units == '-f'){
-			this.setUnits('Fahrenheit');
-		} else {
-			this.setUnits('Celsius');
-		}
-}
+exports.addToList = function(name, description, tag, hasValue) {
 
-
-var valueItem = function (item) {
-	var city;
-	if(process.argv.indexOf("-c") != -1){ //does our flag exist?
-		city = process.argv[process.argv.indexOf("-c") + 1]; //grab the next item
-	}
-}
-
-var addToList = function(name, description, tag, hasValue) {
-
-	bigList.add({"name":name, "description": description, "tag": tag, "hasValue": hasValue})
-	
+	bigList.push({"name":name, "description": description, "tag": tag, "hasValue": hasValue})	
 }
 
 exports.process = function () {
 	
-	var doneWithDefinedItems = function () {}
-	
-	var forEachArgument = function () {
+
+	p(bigList, function(listItem) {
+		// check for defined values
 		
-	}
-	
-	var forEachDefinedItem = function () {
-		p(process.arv, forEachArgument, doneWithDefinedItems)
-	}
-	
-	p(bigList, forEachDefinedItem(bigList), doneWithDefinedItems)
+		var tagIndex = process.argv.indexOf(listItem.tag);
+		if (tagIndex != -1) {
+			listItem.isPresent = true;
+			
+			if (listItem.hasValue === true) {
+				listItem.valueFound = process.argv[tagIndex + 1];
+			}
+			returnList.push(listItem);
+		}
+		
+	}, function () {
+		//whole process complete
+		console.log('Completed Entire loop');
+		//console.log(returnList);
+		return returnList;
+	})
 }

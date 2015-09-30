@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/jasoncmcg/node-cmd-switch/issues"
   },
-  "homepage": "https://github.com/jasoncmcg/node-cmd-switch#readme"
+  "homepage": "https://github.com/jasoncmcg/node-cmd-switch#readme",
+  "dependencies": {
+    "node-in-parallel": "^1.0.0"
+  }
 }
