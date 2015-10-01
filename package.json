@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/jasoncmcg/node-cmd-switch#readme",
   "dependencies": {
-    "node-in-parallel": "^1.0.0"
+    "node-in-parallel": "^1.0.1"
   }
 }
