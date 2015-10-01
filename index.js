@@ -1,19 +1,17 @@
 var p = require("node-in-parallel");
 
 var bigList = [];
-var returnList = [];
+var returnItem = {};
 
 exports.addToList = function(name, description, tag, hasValue) {
 
 	bigList.push({"name":name, "description": description, "tag": tag, "hasValue": hasValue})	
 }
 
-exports.process = function () {
+exports.process = function (cb) {
 	
-
 	p(bigList, function(listItem) {
-		// check for defined values
-		
+	
 		var tagIndex = process.argv.indexOf(listItem.tag);
 		if (tagIndex != -1) {
 			listItem.isPresent = true;
@@ -21,13 +19,10 @@ exports.process = function () {
 			if (listItem.hasValue === true) {
 				listItem.valueFound = process.argv[tagIndex + 1];
 			}
-			returnList.push(listItem);
+			returnItem[listItem.name] = listItem;
 		}
 		
 	}, function () {
-		//whole process complete
-		console.log('Completed Entire loop');
-		//console.log(returnList);
-		return returnList;
+		cb(returnItem);
 	})
 }
