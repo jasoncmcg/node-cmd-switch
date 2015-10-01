@@ -18,6 +18,10 @@ exports.process = function (cb) {
 			
 			if (listItem.hasValue === true) {
 				listItem.valueFound = process.argv[tagIndex + 1];
+				
+				if (listItem.valueFound.charAt(0) === "-") {
+					listItem.valueFound = undefined;
+				}
 			}
 			returnItem[listItem.name] = listItem;
 		}
